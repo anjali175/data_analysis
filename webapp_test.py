@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
 from streamlit_folium import folium_static
 import folium
 import plotly.express as px
