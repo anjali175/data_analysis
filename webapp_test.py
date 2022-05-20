@@ -1,8 +1,6 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-from streamlit_folium import folium_static
-import folium
 import plotly.express as px
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
@@ -331,20 +329,7 @@ class crime:
         obj.drop(['Unnamed: 0','index'], axis = 1,inplace=True)
         obj['avg'] = pd.to_numeric(obj[["Rape","Kidnapping and Abduction","Dowry Deaths","Assault on women with intent to outrage her modesty","Insult to modesty of Women","Cruelty by Husband or his Relatives","Importation of Girls"]].mean(axis=1))
         st.write(obj)
-        loc=[]
-        loc.append(obj.loc[0,"latitude"])
-        loc.append(obj.loc[0,"longitde"])
-        m = folium.Map(location=loc, zoom_start=16)
-        value=str(obj['avg'])
-        folium.Marker(location=loc,popup='See the average number of crimes happening per year '+' WITH '+str(value)+' CRIMES PER YEAR',tooltip='<strong>Click here to see Popup</strong>',icon=folium.Icon(color='red',icon='none')).add_to(m)
-
-        #if int(obj.iloc[0]['avg'])>0 and int(obj.iloc[0]['avg'])<2000:
-            #folium.Marker(location=loc,popup='MODERATELY UNSAFE ZONE'+' WITH '+str(value)+' CRIMES PER YEAR',tooltip='<strong>Click here to see Popup</strong>',icon=folium.Icon(color='blue',icon='none')).add_to(m)
-        #elif int(obj.iloc[0]>4000) and int(obj.iloc[0])<10000:
-            #folium.Marker(location=loc,popup='SAFE'+' WITH '+str(value)+' CRIMES PER YEAR',tooltip='<strong>Click here to see Popup</strong>',icon=folium.Icon(color='green',icon='none')).add_to(m)
-        #else:
-            #folium.Marker(location=loc,popup='DANGEROUS ZONE'+' WITH '+str(value)+' CRIMES PER YEAR',tooltip='<strong>Click here to see Popup</strong>',icon=folium.Icon(color='red',icon='none')).add_to(m)
-        folium_static(m)
+      
     @staticmethod
     def Crime_bar():
         data= pd.read_csv('crimes_against_women_2001-2014 (2).csv')
