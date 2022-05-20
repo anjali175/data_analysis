@@ -2,8 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from streamlit_folium import folium_static
-import folium
+
 import plotly.express as px
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
@@ -15,7 +14,7 @@ import base64
 
 #Gender Discrimination and Inequality analysiss
 
-df= pd.read_csv('D:\Final year project\crime1.csv')
+df= pd.read_csv('C:\\Users\\hp\Desktop\\stremlitut\\crime1.csv')
 st.markdown("<h1 style='text-align:left; color:Black;'><u><b>Gender Discrimination and Inequality Analysis</b></u></h1>",unsafe_allow_html=True)
 st.sidebar.title("FIELDS")
 select1 = st.sidebar.selectbox('Domains',options=['Choose a field','Education','Workforce','Crime'])
@@ -25,7 +24,7 @@ if select1!="Crime":
     select2=st.sidebar.selectbox('Domains',options=['Choose the type of visualisation you want to see','Bar style','Line style','Scatter style'])
     st.sidebar.write('You selected: ',select2) 
 else:
-    data_url=('D:\crime_processed_data.csv')
+    data_url=('C:\\Users\\hp\Desktop\\stremlitut\\crime_processed_data.csv')
     data=pd.read_csv(data_url)
     st.sidebar.title("Visualisation")
     select3=st.sidebar.selectbox('Domains',options=['Choose the type of visualisation you want to see','Bar style','Map style'])
@@ -76,7 +75,7 @@ background-size:cover;
 class education:
     @staticmethod
     def literacy_rate(vis):
-        data= pd.read_csv('D:\Final year project\literacy rate 15 years and above.csv')
+        data= pd.read_csv('C:\\Users\\hp\Desktop\\stremlitut\\literacy rate 15 years and above.csv')
         df = data.loc[data['Country Name'] =='India']
         df.dropna(axis=1,inplace=True)
         dat = df.iloc[0, 4:]
@@ -102,7 +101,7 @@ class education:
 
     @staticmethod
     def high_schooledu(vis):
-        data= pd.read_csv('D:\Final year project\Progression to high school female.csv')
+        data= pd.read_csv('C:\\Users\\hp\Desktop\\stremlitut\\Progression to high school female.csv')
         df = data.loc[data['Country '] =='India']
         df.dropna(axis=1,inplace=True)
         dat = df.iloc[0, 4:]
@@ -126,7 +125,7 @@ class education:
             st.write("<h2 style='text-align:left; color:Tomato;'><b>After analysing the Progression to high School from year 1986 to 2017  ..we reached to the conclusion that  progression to high schook  in india for females  after the 2002 yr have been decreasing.</b></h2>",unsafe_allow_html=True)
     @staticmethod
     def primary_edu(vis):
-        data= pd.read_csv('D:\Final year project\Primary education female.csv')
+        data= pd.read_csv('C:\\Users\\hp\Desktop\\stremlitut\\Primary education female.csv')
         df = data.loc[data['Country Name'] == 'India']
         df.dropna(axis=1,inplace=True)
         dat = df.iloc[0, 4:]
@@ -150,7 +149,7 @@ class education:
             st.write("<h2 style='text-align:left; color:Tomato;'><b>After analysing the primary education  rate of year 1971 to 2017  ..we reached to the conclusion that primary education in india has been increasing by the time.</b></h2>",unsafe_allow_html=True)
     @staticmethod
     def GPI_primary(vis):
-        data= pd.read_csv('D:\Final year project\Parity Index (primary).csv')
+        data= pd.read_csv('C:\\Users\\hp\Desktop\\stremlitut\\Parity Index (primary).csv')
         main=data[data["Country Name"]=="India"]
         main.dropna(axis=1,inplace=True)
         main.drop(["Indicator Code"],axis=1)
@@ -177,7 +176,7 @@ class education:
             st.write("<h2 style='text-align:left; color:Tomato;'><b>After analysing the Gender parity index in primary education  from year 1971 to 2020..we reached to the conclusion that  gender parity index in primary education in india had  been increasing from 1971 to 2016 yr then it is decreasing.  </b></h2>",unsafe_allow_html=True)
     @staticmethod
     def GPI_secondary(vis):
-        data= pd.read_csv('D:\Final year project\Gender Parity Index(primary and secondary).csv')
+        data= pd.read_csv('C:\\Users\\hp\Desktop\\stremlitut\\Final year project\\Gender Parity Index(primary and secondary).csv')
         main=data[data["Country Name"]=="India"]
         main.dropna(axis=1,inplace=True)
         main.drop(["Indicator Code"],axis=1)
@@ -207,8 +206,8 @@ class education:
 class Workforce:
     @staticmethod
     def wagensalaries(vis):
-        data1= pd.read_csv('D:\Final year project\Wage and salaried workers, female.csv') 
-        data2= pd.read_csv('D:\Final year project\Wage and salaried workers, male.csv') 
+        data1= pd.read_csv('C:\\Users\\hp\Desktop\\stremlitut\\Wage and salaried workers, female.csv') 
+        data2= pd.read_csv('C:\\Users\\hp\Desktop\\stremlitut\\Wage and salaried workers, male.csv') 
         main1=data1[data1["Country Name"]=="India"]
         main2=data2[data2["Country Name"]=="India"]
         main1.dropna(axis=1,inplace=True)
@@ -249,7 +248,7 @@ class Workforce:
             st.write("<h2 style='text-align:left; color:Tomato;'><b>After analysing the wages and salaried of female workers and male workers  from year 1991 to 2019...we reached to the conclusion that there is huge gap between the salary of females and males from 1971 to 2016 yr and after 2017 year ,we seen equality in male and women worker salaries.... </b></h2>",unsafe_allow_html=True)
     @staticmethod
     def ratio_labourforce(vis):
-        data= pd.read_csv('D:\Final year project\Ratio of female to male labor force participation rate.csv')
+        data= pd.read_csv('C:\\Users\\hp\Desktop\\stremlitut\\Ratio of female to male labor force participation rate.csv')
         main=data[data["Country Name"]=="India"]
         main.dropna(axis=1,inplace=True)
         temp = main.iloc[0, 4:]
@@ -272,8 +271,8 @@ class Workforce:
             st.write("<h2 style='text-align:left; color:Tomato;'><b>After analysing the female to male labour force participation from year 1990 to 2019...we reached to the conclusion that  female to male labour force participation in india had  been same from 1991 to 2004 yr then it is decreasing till now.   </b></h2>",unsafe_allow_html=True)
     @staticmethod
     def labourforce(vis):
-        data1= pd.read_csv('D:\Final year project\labour male.csv')
-        data2= pd.read_csv('D:\Final year project\labour female.csv')
+        data1= pd.read_csv('C:\\Users\\hp\Desktop\\stremlitut\\labour male.csv')
+        data2= pd.read_csv('C:\\Users\\hp\Desktop\\stremlitut\\labour female.csv')
         main1=data1[data1["Country Name"]=="India"]
         main2=data2[data2["Country Name"]=="India"]
         main1.dropna(axis=1,inplace=True)
@@ -325,7 +324,7 @@ class crime:
                     return data.iloc[[i]].reset_index()
     @staticmethod               
     def Crime_map():
-        data= pd.read_csv('D:\Final year project\crime1.csv')
+        data= pd.read_csv('C:\\Users\\hp\Desktop\\stremlitut\\crime1.csv')
         st.sidebar.title("Choose the state")
         select=st.sidebar.selectbox('State',options=df["STATE/UT"])
         obj=crime.search_group(select,data)
@@ -335,18 +334,15 @@ class crime:
         loc=[]
         loc.append(obj.loc[0,"latitude"])
         loc.append(obj.loc[0,"longitde"])
-        m = folium.Map(location=loc, zoom_start=16)
-        value=str(obj['avg'])
-        folium.Marker(location=loc,popup='See the average number of crimes happening per year '+' WITH '+str(value)+' CRIMES PER YEAR',tooltip='<strong>Click here to see Popup</strong>',icon=folium.Icon(color='red',icon='none')).add_to(m)
-
+        
+        
         #if int(obj.iloc[0]['avg'])>0 and int(obj.iloc[0]['avg'])<2000:
             #folium.Marker(location=loc,popup='MODERATELY UNSAFE ZONE'+' WITH '+str(value)+' CRIMES PER YEAR',tooltip='<strong>Click here to see Popup</strong>',icon=folium.Icon(color='blue',icon='none')).add_to(m)
         #elif int(obj.iloc[0]>4000) and int(obj.iloc[0])<10000:
             #folium.Marker(location=loc,popup='SAFE'+' WITH '+str(value)+' CRIMES PER YEAR',tooltip='<strong>Click here to see Popup</strong>',icon=folium.Icon(color='green',icon='none')).add_to(m)
         #else:
             #folium.Marker(location=loc,popup='DANGEROUS ZONE'+' WITH '+str(value)+' CRIMES PER YEAR',tooltip='<strong>Click here to see Popup</strong>',icon=folium.Icon(color='red',icon='none')).add_to(m)
-        folium_static(m)
-    @staticmethod
+    @staticmethod  
     def Crime_bar():
         data= pd.read_csv('crimes_against_women_2001-2014 (2).csv')
         data.drop(['Unnamed: 0','DISTRICT'], axis = 1,inplace=True)
